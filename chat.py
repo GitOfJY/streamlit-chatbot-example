@@ -4,6 +4,12 @@ from dotenv import load_dotenv
 from llm import get_ai_response
 import uuid
 
+MAX_MESSAGES = 50
+
+if len(st.session_state.message_list) >= MAX_MESSAGES:
+    st.warning("일일 사용량을 초과했습니다.")
+    st.stop()
+
 st.set_page_config(page_title="소득세 챗봇", page_icon="🤖")
 
 st.title("🤖 소득세 챗봇")
